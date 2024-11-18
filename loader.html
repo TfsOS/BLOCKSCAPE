@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        /* General styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Stage 1: Loading Screen */
+        #loadingScreen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+            height: 100%;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #loadingImage {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        #loadingText {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .progressBar {
+            margin-top: 20px;
+            width: 80%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progressBarInner {
+            height: 100%;
+            width: 0;
+            background: limegreen;
+            transition: width 5s linear;
+        }
+
+        /* Stage 2: Fullscreen Iframe */
+        #iframeScreen {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stage 1: Loading Screen -->
+    <div id="loadingScreen">
+        <img id="loadingImage" src="./texture/loading.png" alt="Loading Image">
+        
+      <p><progress></progress></p>
+        </div>
+    </div>
+
+    <!-- Stage 2: Fullscreen Iframe -->
+    <div id="iframeScreen">
+        <iframe src="index.html"></iframe>
+    </div>
+
+    <script>
+
+        // Transition to iframe after 5 seconds
+        setTimeout(() => {
+            document.getElementById('loadingScreen').style.display = 'none';
+            document.getElementById('iframeScreen').style.display = 'block';
+        }, 5000);
+    </script>
+</body>
+</html>
